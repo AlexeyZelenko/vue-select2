@@ -71,7 +71,7 @@
         },
         computed: {
             pages() {
-                return Math.ceil(this.users_data.length / 5)
+                return Math.ceil(this.users_data.length / this.usersPerPage)
             },
             paginatedUsers() {
                 let from = (this.pagesNumber - 1) * this.usersPerPage;

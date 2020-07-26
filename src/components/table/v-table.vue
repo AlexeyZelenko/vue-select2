@@ -1,13 +1,14 @@
 <template>
 	<div class="v-table">
 		<div class="v-table__header">
-			<p>
+			<p @click="sortByName">
 				Name
 				<i class="material-icons">
 					unfold_more
 				</i>
 			</p>
-			<p>Phone
+			<p  @click="sortByPhone" >
+				Phone
 				<i class="material-icons">
 					unfold_more
 				</i>
@@ -59,7 +60,13 @@
         },
         methods: {
             pageClick(page) {
-						this.pagesNumber = page;
+                this.pagesNumber = page;
+            },
+            sortByName() {
+                this.users_data.sort((a, b) => a.name.localeCompare(b.name))
+            },
+            sortByPhone() {
+                this.users_data.sort((a, b) => a.phone.localeCompare(b.name))
             }
         },
         computed: {
@@ -99,6 +106,7 @@
 	.v-table__header p {
 		/*flex-basis: 25%;*/
 		/*text-align: center;*/
+		cursor: pointer;
 	}
 
 	.v-table__pagination {
@@ -111,11 +119,13 @@
 		padding: 8px;
 		border: solid 1px #e7e7
 	}
+
 	.page:hover {
 		background: #b6c9b6;
 		cursor: pointer;
 		color: whitesmoke;
 	}
+
 	.page_selected {
 		background: #b6c9b6;
 		cursor: pointer;
